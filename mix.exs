@@ -30,6 +30,7 @@ defmodule Paperwork.Journals.MixProject do
             {:mongodb, "~> 0.4.7"},
             {:poolboy, "~> 1.5"},
             {:elixir_uuid, "~> 1.2"},
+            {:amqp, "~> 1.2"},
             {:distillery, "~> 2.0"},
             {:exsync, "~> 0.2", only: :dev}
         ]
