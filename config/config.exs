@@ -32,7 +32,8 @@ config :paperwork, :events,
     exchange: {:system, :string, "EVENTS_EXCHANGE", "journals_exchange"},
     queue: {:system, :string, "EVENTS_QUEUE", "journals_queue"},
     dead_letter_exchange: {:system, :string, "EVENTS_DEAD_LETTER_EXCHANGE", "journals_dead_letter_exchange"},
-    dead_letter_queue: {:system, :string, "EVENTS_DEAD_LETTER_QUEUE", "journals_dead_letter_queue"}
+    dead_letter_queue: {:system, :string, "EVENTS_DEAD_LETTER_QUEUE", "journals_dead_letter_queue"},
+    handler: Paperwork.Journals.Consumer
 
 config :logger,
     backends: [:console]
