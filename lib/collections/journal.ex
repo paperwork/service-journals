@@ -41,17 +41,21 @@ defmodule Paperwork.Collections.Journal do
         |> strip_privates
     end
 
-    @spec list() :: {:ok, [%__MODULE__{}]} | {:notfound, nil}
-    def list() do
-        %{}
-        |> collection_find(true)
-        |> strip_privates
-    end
-
     @spec list(query :: Map.t) :: {:ok, [%__MODULE__{}]} | {:notfound, nil}
     def list(%{} = query) when is_map(query) do
-        query
-        |> collection_find(true)
+        aggregation = [
+            %{
+                "$match": query
+            },
+            %{
+                "$sort": %{
+                    "_id": 1
+                }
+            }
+        ]
+
+        aggregation
+        |> collection_aggregate()
         |> strip_privates
     end
 
