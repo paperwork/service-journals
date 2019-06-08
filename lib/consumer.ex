@@ -27,6 +27,18 @@ defmodule Paperwork.Journals.Consumer do
                 resource_system_id: new_journal_entry["resource_system_id"]
                     |> Paperwork.Helpers.Journal.validate_resource_system_id!()
                     |> Paperwork.Id.maybe_id_to_objectid(),
+                relevant_to: new_journal_entry["relevant_to"]
+                    |> Paperwork.Helpers.Journal.validate_relevant_to!()
+                    |> Enum.map(fn relevance_entry ->
+                            %{
+                                id: relevance_entry["id"]
+                                    |> IO.inspect
+                                    |> Paperwork.Id.maybe_id_to_objectid(),
+                                system_id: relevance_entry["system_id"]
+                                    |> IO.inspect
+                                    |> Paperwork.Id.maybe_id_to_objectid()
+                            }
+                        end),
                 content: new_journal_entry["content"]
                     |> Paperwork.Helpers.Journal.validate_content!()
             }
