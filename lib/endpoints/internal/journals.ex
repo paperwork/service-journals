@@ -20,9 +20,6 @@ defmodule Paperwork.Journals.Endpoints.Internal.Journals do
                     |> Paperwork.Collections.Journal.query_relevant_to(Map.get(params, :relevant_to) |> Paperwork.Id.from_gid())
                     |> Paperwork.Collections.Journal.query_newer_than_id(Map.get(params, :newer_than_id) |> Paperwork.Id.from_gid())
 
-                IO.inspect params
-                IO.inspect query
-
                 response = Paperwork.Collections.Journal.list(query)
                 conn
                 |> resp(response)

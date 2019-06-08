@@ -90,7 +90,6 @@ defmodule Paperwork.Collections.Journal do
     end
 
     def query_newer_than_id(%{} = query, %Paperwork.Id{} = id) do
-        IO.inspect id
         query
         |> Map.put(
             :_id,

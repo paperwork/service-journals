@@ -32,10 +32,8 @@ defmodule Paperwork.Journals.Consumer do
                     |> Enum.map(fn relevance_entry ->
                             %{
                                 id: relevance_entry["id"]
-                                    |> IO.inspect
                                     |> Paperwork.Id.maybe_id_to_objectid(),
                                 system_id: relevance_entry["system_id"]
-                                    |> IO.inspect
                                     |> Paperwork.Id.maybe_id_to_objectid()
                             }
                         end),
